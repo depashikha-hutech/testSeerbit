@@ -1,0 +1,154 @@
+<aura:component implements="force:appHostable,force:hasRecordId,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickAction" controller="profilepage" access="global">
+   	
+   <!--- <aura:attribute name="isSaveButtonDisabled" type="Boolean" default="false" />-->
+        <aura:attribute name="Profile" type="Profile__c" default="{sobjecttype:'Profile__c'}"></aura:attribute> 
+		<aura:attribute name="recordId" type="String" />
+    
+    <force:recordData aura:id="recordLoader"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetFields="{!v.Profile}"
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.record}"
+                      mode="VIEW"/>
+
+    
+    
+    
+        <div class="slds-box slds-theme_default">
+        <div class="slds-text-heading_large;">
+        <h2 style="font-size:30px;font-family: Sans-Serif', monospace; text-align: left"><b>Profile</b></h2>
+        <hr style="margin:0.5rem 0"></hr>
+     <!---General-->
+        <h1 style="font-family:verdana;font-size:20px">General</h1>
+        <hr style="margin:0.5rem 0"></hr>
+        <div class="slds-form slds-form_horizontal">   
+        <div class="slds-grid slds-wrap">     
+        <div class="slds-col slds-size_1-of-3 slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;" name="Name" label="Name" value="{!v.Profile.Name}"> </lightning:input> 
+        </div>
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="PhoneNo." label="PhoneNo." value="{!v.Profile.PhoneNo__c}" > </lightning:input>  
+        </div> 
+        </div>
+    	<div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="Address." label="Address" value="{!v.Profile.Address__c}"  > </lightning:input>
+        </div>
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="VATRegistrationNo." label="VATRegistrationNo." value="{!v.Profile.VAT_RegistratrionNo__c}" > </lightning:input>  
+        </div> 
+        </div>
+        <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="Address2" label="Address2" value="{!v.Profile.Address2__c}"   > </lightning:input>
+        </div>
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="GLN" label="GLN" value="{!v.Profile.GLN__c}"  > </lightning:input>  
+        </div> 
+        </div>
+        <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="City" label="City" value="{!v.Profile.City__c}"  > </lightning:input>  
+        </div> 
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="PostCode" label="PostCode" value="{!v.Profile.Post_Code__c}" > </lightning:input> 
+        </div> 
+        </div>
+        <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="Country/RegionCode" label="Country/RegionCode" value="{!v.Profile.Country__c}"  > </lightning:input> 
+        </div>
+        <div class="slds-col slds-size_1-of-3 slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="ContactName" label="ContactName" value="{!v.Profile.Contact_Name__c}"   > </lightning:input> 
+        </div>
+        </div>
+        </div>
+    <!---SeerBitPayment-->
+        <h1 style="font-family:verdana;font-size:20px">SeerBitPayment</h1>
+        <hr style="margin:0.5rem 0"></hr>
+        <div class="slds-form slds-form_horizontal">
+        <div class="slds-grid slds-wrap">     
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="PublicKey" label="PublicKey" value="{!v.Profile.	Public_Key__c}" required="true" class="red" > </lightning:input>  
+        </div> 
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+         <lightning:input style="font-size:10px;"  name="Prefix" label="Prefix" value="{!v.Profile.Prefix__c}"   > </lightning:input> 
+        </div> 
+        </div>
+        <div class="slds-grid slds-wrap">   
+       <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+         <lightning:input style="font-size:10px;"  name="SecretKey" label="SecretKey" value="{!v.Profile.Secret_Key__c}" required="true" class="red"  > </lightning:input> 
+        </div> 
+            <div class="slds-col slds-size_1-of-3 slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;" name="BusinessEmail" label="BusinessEmail" value="{!v.Profile.BusinessEmail__c}"  > </lightning:input> 
+        </div>
+        </div>
+             <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="DefaultCurrency" label="DefaultCurrency" value="{!v.Profile.Currency__c}"  > </lightning:input> 
+        </div>
+        </div>
+        </div>
+    <!---Communication-->
+        <h1 style="font-family:verdana;font-size:20px">Communication</h1>
+    <hr style="margin:0.5rem 0"></hr>
+        <div class="slds-form slds-form_horizontal">
+       <div class="slds-grid slds-wrap">      
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+         <lightning:input style="font-size:10px;" name="Email" label="Email" value="{!v.Profile.Email__c}"  > </lightning:input> 
+         </div>
+          </div>
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+       <lightning:input style="font-size:10px;" name="HomePage" label="HomePage" value="{!v.Profile.HomePage__c}" > </lightning:input> 
+        </div>
+             </div>
+   <!---Payments-->
+          <h1 style="font-family:verdana;font-size:20px">Payments</h1>
+    <hr style="margin:0.5rem 0"></hr>
+        <div class="slds-form slds-form_horizontal">
+       <div class="slds-grid slds-wrap">      
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+         <lightning:input style="font-size:10px;" name="BankName" label="Bankname" value="{!v.Profile.Bank_Name__c}"> </lightning:input> 
+         </div>
+           <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+         <lightning:input style="font-size:10px;" name="GirNo." label="Girno." value="{!v.Profile.GirNo__c}"> </lightning:input> 
+         </div>
+          </div>
+    <div class="slds-grid slds-wrap">
+       <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="BankBranchNo." label="Bankbranchname" value="{!v.Profile.BankBranchNo__c}"  > </lightning:input>
+        </div>
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+       <lightning:input style="font-size:10px;"  name="SWIFTCode" label="SWIFTCode" value="{!v.Profile.SWIFTCode__c}"   > </lightning:input>  
+       </div> 
+        </div>
+     <div class="slds-grid slds-wrap">
+       <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="BankAccountNo." label="BankAccountNo." value="{!v.Profile.BankAccountNo__c}"> </lightning:input>
+        </div>
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+       <lightning:input style="font-size:10px;"  name="IBAN" label="IBAN" value="{!v.Profile.IBAN__c}"  > </lightning:input>  
+       </div> 
+        </div> 
+     <div class="slds-grid slds-wrap">
+       <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+        <lightning:input style="font-size:10px;"  name="PaymentRoutingNo." label="Bankbranchname" value="{!v.Profile.PaymentRoutingNo__c}"  > </lightning:input>
+        </div>
+        <div class="slds-col slds-size_1-of-3  slds-p-left_xx-large">
+       <lightning:input style="font-size:10px;"  name="BankAccountPosting" label="BankAccountPosting..." value="{!v.Profile.BankAccountPosting__c}"> </lightning:input>  
+       </div> 
+        </div>
+        </div>
+    <!---Shipping-->
+          <h1 style="font-family:verdana;font-size:20px">Shipping</h1>
+    <hr style="margin:0.5rem 0"></hr>
+    <!---CompanyBadge-->
+          <h1 style="font-family:verdana;font-size:20px">CompanyBadge</h1>
+    <hr style="margin:0.5rem 0"></hr>
+    <!---SAve-->
+     <div class="slds-col slds-size_10-of-12 slds-text-align_center">
+        <lightning:button variant="brand" label="Save" title="save action" onclick="{!c.dosave}" />
+        <!--<lightning:button variant="brand" label="Continue" title="Continue" onclick="{!c.doUpdate}"/>-->
+    </div>
+    </div>
+</aura:component>
